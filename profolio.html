@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Web Developer</title>
+  <meta name="description" content="Portfolio of Your Name, a web developer specializing in modern web applications, responsive design, and elegant solutions." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* Card Container */
+    .container {
+      max-width: 1000px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Info Section */
+    .info {
+      flex: 1;
+      padding: 1rem 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #222;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #777;
+      margin-bottom: 1.5rem;
+      min-height: 30px;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Buttons */
+    .button {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      margin: 0.5rem;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background: #444;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    /* Animation */
+    .animation {
+      flex: 1;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .info {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Animation Section -->
+    <div class="animation">
+      <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js" type="module"></script>
+      <dotlottie-wc
+        src="https://lottie.host/39ecb1fd-75d3-4564-ab2c-ebf28f0d8139/2SlQuewKu7.lottie"
+        style="width: 300px; height: 300px"
+        autoplay
+        loop>
+      </dotlottie-wc>
+    </div>
+
+    <!-- Info Section -->
+    <div class="info">
+      <h1>Laraib Tahir</h1>
+      <h2 id="typing"></h2>
+ <p>
+  Hello 👋 I’m a passionate web developer. I specialize in <strong>JavaScript</strong>, 
+  <strong>Vue.js</strong>, and <strong>Laravel</strong>. 
+  I also enjoy <strong>debugging complex problems</strong> — finding out why things break 
+  and solving them at the root.
+</p>
+      <div>
+        <a href="https://github.com/laraib15" target="_blank" class="button">GitHub</a>
+        <a href="https://www.linkedin.com/in/laraib-15-tahir" target="_blank" class="button">LinkedIn</a>
+        <a href="mailto:laraib15tahir@gamil.com" class="button">Contact Me</a>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Typing Effect -->
+ <h2 id="typing"></h2>
+
+<script>
+  // Add all your skills/roles here
+  const roles = [
+  "Web Developer",
+  "Vue.js Enthusiast",
+  "Laravel Developer",
+  "GraphQL Explorer"
+];
+
+  let i = 0;       // index for roles
+  let j = 0;       // index for letters
+  let isDeleting = false;
+  const typingElement = document.getElementById("typing");
+  const typingSpeed = 120;   // typing speed
+  const deletingSpeed = 60;  // deleting speed
+  const pauseAfterWord = 1200; // pause when word is finished
+
+  function typeEffect() {
+    const currentRole = roles[i];
+    let text = currentRole.substring(0, j);
+
+    typingElement.textContent = text + " |"; // adds blinking cursor effect
+
+    if (!isDeleting && j < currentRole.length) {
+      j++;
+      setTimeout(typeEffect, typingSpeed);
+    } else if (isDeleting && j > 0) {
+      j--;
+      setTimeout(typeEffect, deletingSpeed);
+    } else {
+      if (!isDeleting) {
+        // Word finished
+        isDeleting = true;
+        setTimeout(typeEffect, pauseAfterWord);
+      } else {
+        // Move to next role
+        isDeleting = false;
+        i = (i + 1) % roles.length;
+        setTimeout(typeEffect, typingSpeed);
+      }
+    }
+  }
+
+  typeEffect();
+</script>
+
+</body>
+</html>
